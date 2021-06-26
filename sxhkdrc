@@ -1,0 +1,65 @@
+# Function keys
+
+XF86PowerOff
+	rofi -show powermenu -modi powermenu:~/.config/rofi/rofi-power-menu
+
+XF86AudioMute
+	pulsemixer --toggle-mute
+
+XF86AudioRaiseVolume
+	pulsemixer --change-volume +5
+
+XF86AudioLowerVolume
+	pulsemixer --change-volume -5
+
+XF86AudioMicMute
+	pulsemixer --id source-1 --toggle-mute
+
+XF86MonBrightnessUp
+	xbacklight -inc 15
+
+XF86MonBrightnessDown
+	xbacklight -dec 15
+
+# misc
+
+super + Return
+	alacritty
+
+super + d
+	rofi -show drun
+
+super + c
+	maim ~/Pictures/shots/$(date +%sshot).png
+
+super + shift + c
+	maim -s | xclip -selection clipboard -t image/png
+
+super + l
+	slock
+
+# sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+super + {_,shift + }q
+	bspc node -{c,k}
+
+super + shift + {t,s,f}
+	bspc node -t {tiled,floating,fullscreen}
+
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+super + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+super + alt + shift + {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}

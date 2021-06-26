@@ -1,0 +1,15 @@
+#! /bin/sh
+killall -q polybar flashfocus picom sxhkd
+~/.fehbg &
+xrdb ~/.xresources &
+sxhkd &
+picom &
+flashfocus -t 200 &
+polybar main &
+xsetroot -cursor_name left_ptr &
+bspc monitor -d I II III IV V
+bspc config border_width        0
+bspc config window_gap          12
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
